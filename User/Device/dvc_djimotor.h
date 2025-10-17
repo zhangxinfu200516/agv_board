@@ -95,6 +95,7 @@ struct Struct_DJI_Motor_Data
     int32_t Total_Encoder;
     int32_t Total_Round;
     int32_t Pre_Total_Encoder;
+    int16_t rpm;
 };
 
 /**

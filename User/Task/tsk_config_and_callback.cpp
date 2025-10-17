@@ -80,7 +80,8 @@ void Agv_Board_CAN2_Callback(Struct_CAN_Rx_Buffer *CAN_RxMessage)
 {
     switch (CAN_RxMessage->Header.StdId)
     {
-    case (AGV_BOARD_ID):
+    case (0x1AU):
+    case (0x1BU):
     case 0x01E:
     {
         steering_wheel.CAN_RxChassisCallback(CAN_RxMessage);

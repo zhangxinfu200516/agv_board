@@ -590,7 +590,7 @@ void Class_DJI_Motor_C620::Data_Process()
     Data.Now_Omega_Angle = (float)tmp_omega * RPM_TO_DEG / Gearbox_Rate;
     Data.Now_Torque = tmp_torque;
     Data.Now_Temperature = tmp_temperature + CELSIUS_TO_KELVIN;
-
+    Data.rpm = tmp_omega;
     //存储预备信息
     Data.Pre_Encoder = tmp_encoder;
     if(Start_Falg==0)  Start_Falg = 1;
