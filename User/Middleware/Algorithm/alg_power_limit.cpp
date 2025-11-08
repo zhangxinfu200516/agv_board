@@ -161,13 +161,13 @@ float Class_Power_Limit::Calculate_Toque(float omega, float power, float torque,
 
     float delta = omega * omega - 4 * (k1 * fabs(omega) + k3 - power) * k2;
 
-    if (torque * omega <= 0 || floatEqual(power, 0.0f))             //电机减速反向电动势是发出功率，不消耗功率
-    {
-        newTorqueCurrent = torque;
-        test_flag=0;
-    }
-    else
-    {
+    // if (torque * omega <= 0 || floatEqual(power, 0.0f))             //电机减速反向电动势是发出功率，不消耗功率
+    // {
+    //     newTorqueCurrent = torque;
+    //     test_flag=0;
+    // }
+    // else
+    // {
         if (floatEqual(delta, 0.0f))
         {
             newTorqueCurrent = -omega / (2.0f * k2);
@@ -192,7 +192,7 @@ float Class_Power_Limit::Calculate_Toque(float omega, float power, float torque,
             newTorqueCurrent = -omega / (2.0f * k2);
             test_flag=3;
         }
-    }
+    // }
     return newTorqueCurrent;
 }
 /**
@@ -288,7 +288,8 @@ void Class_Power_Limit::Power_Task(Struct_Power_Management &power_management)
     {
         power_pid_out = 0;
     }
-    
+    //设置pid反馈值为0
+    //power_pid_out = 0;
     dirmotor_predic_power = tmp_dirmotor_predic_power + power_pid_out;
     motmotor_predic_power = tmp_motmotor_predic_power + power_pid_out;
     dir_needScaled_power = tmp_dir_needScaled_power + power_pid_out;
